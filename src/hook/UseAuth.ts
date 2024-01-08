@@ -5,7 +5,7 @@ import keycloak from "../service/UserService";
 const useAuth = () => {
     const isRun = useRef(false);
     const [token, setToken] = useState<string | undefined>();
-    const [keycloackValue, setKeycloackValue] = useState<any>(null)
+    const [keycloakValue, setKeycloakValue] = useState<any>(null)
     const [isLogin, setLogin] = useState<boolean>(false);
 
     const initializeKeycloak = async () => {
@@ -19,7 +19,7 @@ const useAuth = () => {
 
             if (authenticated) {
                 console.log("User is authenticated");
-                setKeycloackValue(keycloak)
+                setKeycloakValue(keycloak)
                 setToken(keycloak.token);
                 localStorage.setItem("serviceToken", JSON.stringify(keycloak.token));
             } else {
@@ -53,11 +53,11 @@ const useAuth = () => {
     const logout: any = () => {
         initializeKeycloak();
         setLogin(false);
-        keycloackValue.logout()
+        keycloakValue.logout()
 
     }
 
-    return [isLogin, token, logout];
+    return [isLogin, token, logout, keycloakValue];
 };
 
 export default useAuth;

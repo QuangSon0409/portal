@@ -10,9 +10,11 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
 import Package from './pages/package/ListPackage';
+import Setting from './pages/setting';
 
 function App() {
   const [isLogin, token] = useAuth();
+  // console.log("isLogin");
 
 
   return (
@@ -25,6 +27,9 @@ function App() {
           <Route path="/" element={<NavBar />} >
             <Route index path="dashboard" element={<Dashboard />} />
             <Route index path="package" element={<Package />} />
+            <Route index path="setting" element={<Setting />} />
+
+
           </Route>
         </Routes >
       </>)}

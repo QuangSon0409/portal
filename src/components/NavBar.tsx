@@ -13,6 +13,7 @@ import PolylineIcon from '@mui/icons-material/Polyline';
 import SubMenu from './SubMenu';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
+import { Settings } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -124,7 +125,9 @@ export default function Navbar() {
                 <List sx={{ marginTop: 2 }}>
                     {[
                         { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-                        { text: 'Package', icon: <PolylineIcon />, path: '/package' }
+                        { text: 'Package', icon: <PolylineIcon />, path: '/package' },
+                        { text: "Setting", icon: <Settings />, path: '/setting' },
+
                     ].map((item, index) => (
                         <ListItem key={index} disablePadding>
                             <ListItemButton component={Link} to={item.path}>

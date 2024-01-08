@@ -1,8 +1,14 @@
 // import React from 'react'
 
-const ReduxProvider = () => {
+import React from "react"
+import { Provider } from "react-redux"
+import { store } from "./index"
+
+const ReduxProvider = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div>ReduxProvider</div>
+        <Provider store={store}>
+            {children}
+        </Provider>
     )
 }
 

@@ -2,10 +2,6 @@ import axios from 'axios';
 
 const instance = axios.create({
     baseURL: `${import.meta.env.VITE_APP_IAM}`,
-    headers: {
-        "Authorization": `Bearer ${localStorage.getItem("serviceToken")}`,
-        "Content-Type": "application/json"
-    }
 });
 
 instance.interceptors.request.use(function (config) {

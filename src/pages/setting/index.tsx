@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Profile from './Profile';
 import MyAccount from './MyAccount';
+import { Paper } from '@mui/material';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -48,7 +49,7 @@ export default function Setting() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Profile" {...a11yProps(0)} />
@@ -62,6 +63,6 @@ export default function Setting() {
                 <MyAccount />
             </CustomTabPanel>
 
-        </Box>
+        </Paper>
     );
 }

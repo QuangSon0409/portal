@@ -47,13 +47,49 @@ export default slice.reducer;
 export const getUser = () => {
     return async () => {
         try {
-            const response = await axios.get(`/realms/sonbq/protocol/openid-connect/userinfo`);
+            const token = JSON.parse(localStorage.getItem("serviceToken") as string);
+
+            const response = await axios.get(`/realms/sonbq/protocol/openid-connect/userinfo`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
 
             console.log("response: ", response.data);
             dispatch(slice.actions.getUserSuccess(response.data))
         } catch (error) {
             dispatch(slice.actions.hasError(error))
         }
+
+    }
+}
+
+interface IUser {
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string
+}
+
+export const updateUser = (data: IUser) => {
+    return async () => {
+        try {
+
+            const token = JSON.parse(localStorage.getItem("serviceToken") as string);
+            const response = await axios.post(`/realms/sonbq/account`, data, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+            console.log('response', response);
+            dispatch(getUser())
+        } catch (error) {
+            dispatch(slice.actions.hasError(error))
+        }
+
+
 
     }
 }

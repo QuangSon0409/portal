@@ -75,7 +75,6 @@ interface IUser {
 export const updateUser = (data: IUser) => {
     return async () => {
         try {
-
             const token = JSON.parse(localStorage.getItem("serviceToken") as string);
             const response = await axios.post(`/realms/sonbq/account`, data, {
                 headers: {
@@ -88,8 +87,6 @@ export const updateUser = (data: IUser) => {
         } catch (error) {
             dispatch(slice.actions.hasError(error))
         }
-
-
-
     }
 }
+

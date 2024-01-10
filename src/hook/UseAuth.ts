@@ -4,7 +4,7 @@ import keycloak from "../service/UserService";
 
 const useAuth = () => {
     const isRun = useRef(false);
-    const [token, setToken] = useState<string | undefined>();
+    const [token, setToken] = useState<any | undefined>();
     const [keycloakValue, setKeycloakValue] = useState<any>(null)
     const [isLogin, setLogin] = useState<boolean>(false);
 
@@ -21,7 +21,7 @@ const useAuth = () => {
                 console.log("User is authenticated");
                 setKeycloakValue(keycloak)
                 setToken(keycloak.token);
-                localStorage.setItem("serviceToken", JSON.stringify(keycloak.token));
+                localStorage.setItem("serviceToken", JSON.stringify(keycloak.token) as string);
             } else {
                 console.log("User is not authenticated");
             }
